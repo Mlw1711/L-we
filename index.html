@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Löwen Neureut – Gasthaus Zum Löwen in Karlsruhe</title>
 <meta name="description" content="Traditionsgasthaus seit 1816 in Karlsruhe-Neureut: deutsche Hausmannskost & griechisch-mediterrane Grillspezialitäten, gemütlicher Biergarten mit Bauhöfer Bier vom Fass. Neureuter Hauptstraße 243.">
-<meta name="theme-color" content="#f5efe3">
+<meta name="theme-color" content="#1b1613">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%81%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,12 +16,28 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="#top" class="brand">
-      <span class="brand-name">Löwen&nbsp;Neureut</span>
-      <span class="brand-sub">Gasthaus Zum Löwen</span>
+      <svg class="logo-mark" viewBox="0 0 60 60" width="32" height="32" aria-hidden="true">
+        <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="30" cy="30" r="9" fill="currentColor"/>
+        <g fill="currentColor">
+          <polygon points="30,1 33,10 27,10"/>
+          <polygon points="30,59 33,50 27,50"/>
+          <polygon points="1,30 10,33 10,27"/>
+          <polygon points="59,30 50,33 50,27"/>
+          <polygon points="9,9 16,14 12,17"/>
+          <polygon points="51,9 44,14 48,17"/>
+          <polygon points="9,51 16,46 12,43"/>
+          <polygon points="51,51 44,46 48,43"/>
+        </g>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Löwen Neureut</span>
+        <span class="brand-sub">Gasthaus Zum Löwen</span>
+      </span>
     </a>
     <nav class="site-nav" aria-label="Hauptnavigation">
       <a href="#speisekarte">Speisekarte</a>
-      <a href="#fotos">Fotos</a>
+      <a href="#ueber-uns">Über uns</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <a class="btn btn-primary btn-call" href="tel:+4972196146900">
@@ -33,9 +49,9 @@
 <main id="main">
 
   <section id="top" class="hero">
-    <div class="hero-photo" role="img" aria-label="Sonniger Biergarten des Löwen Neureut mit Sonnenschirmen, Holztischen und Bänken"></div>
+    <div class="hero-photo" style="--photo-img:url('images/biergarten.jpg')" role="img" aria-label="Sonniger Biergarten des Löwen Neureut mit Sonnenschirmen, Holztischen und Bänken"></div>
     <div class="hero-content container">
-      <p class="kicker">Gasthaus seit 1816</p>
+      <p class="eyebrow">Gasthaus seit 1816</p>
       <h1>Löwen&nbsp;Neureut</h1>
       <p class="hero-tagline">Deutsche Hausmannskost &amp; griechisch-mediterrane Grillspezialitäten</p>
 
@@ -51,9 +67,226 @@
     </div>
   </section>
 
-  <section id="willkommen" class="welcome">
+  <section id="speisekarte" class="section">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Unsere Karte</p>
+        <h2>Speisekarte</h2>
+      </div>
+      <p class="menu-lead">Nach Kategorien geordnet – tippen Sie oben auf eine Kategorie oder blättern Sie mit den Pfeilen durch die Karte.</p>
+
+      <div class="menu-card">
+        <div class="menu-tabs" role="tablist" aria-label="Speisekarten-Kategorien">
+          <button role="tab" id="tab-vorspeisen-kalt" aria-controls="panel-vorspeisen-kalt" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Vorspeisen</button>
+          <button role="tab" id="tab-vorspeisen-warm" aria-controls="panel-vorspeisen-warm" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Warme Vorspeisen</button>
+          <button role="tab" id="tab-salate" aria-controls="panel-salate" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Salate</button>
+          <button role="tab" id="tab-grill" aria-controls="panel-grill" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Vom Grill</button>
+          <button role="tab" id="tab-deutsch" aria-controls="panel-deutsch" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Deutsche Küche</button>
+          <button role="tab" id="tab-mixteller" aria-controls="panel-mixteller" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Mix-Teller</button>
+          <button role="tab" id="tab-fisch" aria-controls="panel-fisch" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Fisch</button>
+          <button role="tab" id="tab-mixplatten" aria-controls="panel-mixplatten" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Mix-Platten</button>
+          <button role="tab" id="tab-beilagen" aria-controls="panel-beilagen" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Beilagen</button>
+          <button role="tab" id="tab-sossen" aria-controls="panel-sossen" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Soßen</button>
+          <button role="tab" id="tab-desserts" aria-controls="panel-desserts" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Desserts</button>
+          <button role="tab" id="tab-mittag" aria-controls="panel-mittag" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Mittagskarte</button>
+        </div>
+
+        <div class="menu-pager">
+          <button type="button" class="pager-btn" data-menu-prev aria-label="Vorherige Kategorie">‹</button>
+          <span class="pager-count" data-menu-count>1 / 12</span>
+          <button type="button" class="pager-btn" data-menu-next aria-label="Nächste Kategorie">›</button>
+        </div>
+
+        <div class="menu-panels">
+
+          <div role="tabpanel" id="panel-vorspeisen-kalt" aria-labelledby="tab-vorspeisen-kalt" class="menu-panel" hidden>
+            <h3>Vorspeisen</h3>
+            <ul class="dish-list is-long">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Tzatziki</span><span class="dish-price">4,90&nbsp;€</span></div><p class="dish-desc">Joghurt, Gurken, Knoblauch, Olivenöl, Dill</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Tarama</span><span class="dish-price">6,50&nbsp;€</span></div><p class="dish-desc">Kaviar, Olivenöl</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Auberginensalat</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Gegrillte Auberginen, Paprika, Zwiebel, Knoblauch</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lütika</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Feta, Paprika, Olivenöl</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix</span><span class="dish-price">7,50&nbsp;€</span></div><p class="dish-desc">Tzatziki, Tarama, Lütika, Auberginensalat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Tomate-Mozzarella mit Kräutern</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Tomaten, Mozzarella, Gartenkräuter</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Oliventeller</span><span class="dish-price">6,80&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Dicke Bohnen mit Käse</span><span class="dish-price">6,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Weinblätter gefüllt mit Reis</span><span class="dish-price">6,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Vorspeisenkreation für eine Person</span><span class="dish-price">14,50&nbsp;€</span></div><p class="dish-desc">Tzatziki, Tarama, Auberginensalat, Lütika, gefüllte Weinblätter, dicke Bohnen, gefüllte Champignons, gebackener Schafskäse</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Vorspeisenkreation für Zwei</span><span class="dish-price">28,90&nbsp;€</span></div><p class="dish-desc">Kalt &amp; warm: Tzatziki, Tarama, Auberginensalat, Lütika, gegrillte Peperoni, gegrillter Schafskäse, gefüllte Champignons, gebackener Schafskäse, dicke Bohnen</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-vorspeisen-warm" aria-labelledby="tab-vorspeisen-warm" class="menu-panel" hidden>
+            <h3>Warme Vorspeisen</h3>
+            <ul class="dish-list is-long">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gegrillter Schafskäse</span><span class="dish-price">8,90&nbsp;€</span></div><p class="dish-desc">Feta, Zwiebel, Tomate, Gartenkräuter</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gebackener Schafskäse</span><span class="dish-price">8,90&nbsp;€</span></div><p class="dish-desc">Feta, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gegrillte Aubergine</span><span class="dish-price">10,50&nbsp;€</span></div><p class="dish-desc">Aubergine, Olivenöl, Tomate, Käse</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Zucchinipfanne</span><span class="dish-price">6,50&nbsp;€</span></div><p class="dish-desc">Mit Knoblauch</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gegrillte Peperoni mit Knoblauch</span><span class="dish-price">6,90&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gefüllte Champignons</span><span class="dish-price">7,50&nbsp;€</span></div><p class="dish-desc">Champignons, Käse</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gegrillte Champignons</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Champignons, Butter, Petersilie</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Fladenbrot</span><span class="dish-price">2,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Knoblauchbrot</span><span class="dish-price">3,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Garnelenpfanne</span><span class="dish-price">14,90&nbsp;€</span></div><p class="dish-desc">Garnelen, Kräuterbutter, Knoblauch</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-salate" aria-labelledby="tab-salate" class="menu-panel" hidden>
+            <h3>Salate</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Shopska-Salat</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Tomaten, Gurken, Feta, Zwiebel, Paprika</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros-Salat</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Gyros</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putensalat</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Putenfleisch</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Krautsalat</span><span class="dish-price">5,50&nbsp;€</span></div><p class="dish-desc">Weißkraut, Karotten</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Löwensalat</span><span class="dish-price">15,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Rumpsteak</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Beilagensalat</span><span class="dish-price">3,50&nbsp;€</span></div><p class="dish-desc">Gemischter Salat</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-grill" aria-labelledby="tab-grill" class="menu-panel" hidden>
+            <h3>Vom Grill</h3>
+            <ul class="dish-list is-long">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mixspieß mit Bratkartoffeln</span><span class="dish-price">24,90&nbsp;€</span></div><p class="dish-desc">2 Lenden, 2 Rumpsteaks, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Löwenspieß mit Gemüsepfanne</span><span class="dish-price">29,90&nbsp;€</span></div><p class="dish-desc">2 Lammkoteletts, 1 Rumpsteak, 2 Lenden, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Knoblauchspieß mit Pommes</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Schweinefilets mit Knoblauch, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Bulgarischer Spieß mit Pommes</span><span class="dish-price">20,90&nbsp;€</span></div><p class="dish-desc">Schweinenacken, Paprika, Zwiebel, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros mit Pommes und Salat</span><span class="dish-price">16,90&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros mit Käsesoße</span><span class="dish-price">17,90&nbsp;€</span></div><p class="dish-desc">Mit Pommes und Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros mit Pfeffersoße</span><span class="dish-price">17,90&nbsp;€</span></div><p class="dish-desc">Mit Nudeln und Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Bifteki mit Pommes und Salat</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Hackfleisch gefüllt mit Schafskäse</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rinderleber mit Pommes</span><span class="dish-price">15,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, gebratene Zwiebeln, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Köfte mit Pommes und Salat</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Köfte aus Hackfleisch</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lammfilets mit grünen Bohnen</span><span class="dish-price">28,90&nbsp;€</span></div><p class="dish-desc">Mit Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lammkoteletts mit Bratkartoffeln</span><span class="dish-price">28,90&nbsp;€</span></div><p class="dish-desc">Mit Knoblauch und Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lammhaxe mit Salzkartoffeln</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Grüne oder dicke Bohnen, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinefilets mit Pfeffersoße</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Mit Pommes und Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinespießchen mit Pommes</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Und Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Kebapcheta mit Pommes</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Hackfleischröllchen, Salat</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-deutsch" aria-labelledby="tab-deutsch" class="menu-panel" hidden>
+            <h3>Deutsche Küche</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putenschnitzel</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schweineschnitzel</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putensteak</span><span class="dish-price">17,90&nbsp;€</span></div><p class="dish-desc">Pommes, Salat, Kräuterbutter oder Käsesoße</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinenackensteak</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Pommes, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rumpsteak 250 g</span><span class="dish-price">25,90&nbsp;€</span></div><p class="dish-desc">Gemüsepfanne, Kräuterbutter, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rumpsteak 250 g</span><span class="dish-price">26,90&nbsp;€</span></div><p class="dish-desc">Bratkartoffeln, gebratene Zwiebeln, Salat</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-mixteller" aria-labelledby="tab-mixteller" class="menu-panel" hidden>
+            <h3>Mix-Teller vom Grill</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Teller 1</span><span class="dish-price">23,90&nbsp;€</span></div><p class="dish-desc">Gyros, Rumpsteak, Lammkoteletts, Lenden, Pommes oder Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Teller 2</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Gyros, Spieß, Kebapcheta, Schweinesteak, Pommes oder Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Teller 3</span><span class="dish-price">20,90&nbsp;€</span></div><p class="dish-desc">Gyros, Putensteak, Bifteki, Lenden, Pommes oder Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Teller 4</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gyros, Schweinesteak, Köfte, Leber, Pommes oder Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Teller 5</span><span class="dish-price">17,90&nbsp;€</span></div><p class="dish-desc">Gyros, Spieß, Bifteki, Pommes oder Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Grillteller</span><span class="dish-price">24,50&nbsp;€</span></div><p class="dish-desc">Verschiedene Fleischsorten und Gemüse: Spieß, Kebapcheta, Köfte, Schweinesteak, Putensteak</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-fisch" aria-labelledby="tab-fisch" class="menu-panel" hidden>
+            <h3>Fisch vom Grill</h3>
+            <ul class="dish-list is-long">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Garnelen</span><span class="dish-price">23,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Calamari gebacken</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Calamari vom Grill</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Doradenfilet</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">21,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Gartenkräuter, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">21,90&nbsp;€</span></div><p class="dish-desc">Salzkartoffeln, Käsesoße, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Zanderfilet</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rotbarschfilet</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Meeresplatte für 2 Personen</span><span class="dish-price">58,00&nbsp;€</span></div><p class="dish-desc">Calamariringe, 2 Doradenfilets, 2 Zanderfilets, Garnelen, Lachsfilet, Tarama, Gemüsereis, Salat</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-mixplatten" aria-labelledby="tab-mixplatten" class="menu-panel" hidden>
+            <h3>Mix-Platten vom Grill</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Platte 1</span><span class="dish-price">52,00&nbsp;€</span></div><p class="dish-desc">Gyros, 2 Schweinesteaks, 2 Putensteaks, 2 Rumpsteaks, gegrillte Peperoni, Pommes, Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Platte 2</span><span class="dish-price">48,00&nbsp;€</span></div><p class="dish-desc">Gyros, 2 Köfte, 2 Bifteki, 2 Schweinesteaks, gegrillte Peperoni, Pommes, Reis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix-Platte bulgarischer Art</span><span class="dish-price">56,00&nbsp;€</span></div><p class="dish-desc">Gyros, 2 große Spieße, 2 Hacksteaks, gegrillter Schafskäse, Peperoni, Pommes, Reis, Salat</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-beilagen" aria-labelledby="tab-beilagen" class="menu-panel" hidden>
+            <h3>Beilagen</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Pommes</span><span class="dish-price">3,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Kroketten</span><span class="dish-price">3,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gemüsereis</span><span class="dish-price">3,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Bandnudeln</span><span class="dish-price">3,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Salzkartoffeln</span><span class="dish-price">3,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gemüsepfanne</span><span class="dish-price">4,50&nbsp;€</span></div></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-sossen" aria-labelledby="tab-sossen" class="menu-panel" hidden>
+            <h3>Soßen</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Pfeffersoße</span><span class="dish-price">2,00&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Käsesoße</span><span class="dish-price">2,00&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Bratensoße</span><span class="dish-price">2,00&nbsp;€</span></div></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-desserts" aria-labelledby="tab-desserts" class="menu-panel" hidden>
+            <h3>Desserts</h3>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gemischtes Eis</span><span class="dish-price">4,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gemischtes Eis mit Sahne</span><span class="dish-price">5,50&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schokokuss mit Sahne</span><span class="dish-price">5,50&nbsp;€</span></div><p class="dish-desc">Vanilleeis, heiße Schokosoße</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Karamell mit Sahne</span><span class="dish-price">5,50&nbsp;€</span></div><p class="dish-desc">Vanilleeis, heiße Karamellsoße</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schokoladen-Soufflé mit Vanilleeis</span><span class="dish-price">5,90&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Kadayıf (Ekmek)</span><span class="dish-price">5,90&nbsp;€</span></div><p class="dish-desc">Kadayıf mit Walnüssen</p></li>
+            </ul>
+          </div>
+
+          <div role="tabpanel" id="panel-mittag" aria-labelledby="tab-mittag" class="menu-panel" hidden>
+            <h3>Mittagskarte</h3>
+            <p class="panel-note">Nur mittags, Montag–Freitag 11:00–14:00 Uhr.</p>
+            <ul class="dish-list is-long">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rinderleber</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schnitzel</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Hacksteak</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros-Salat</span><span class="dish-price">9,90&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rotbarschfilet</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Bauernspieß</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putensalat</span><span class="dish-price">9,90&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putensteak</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Kräuterbutter, Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Bifteki</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Knoblauchspieß</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinelenden</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Pfeffersoße</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinenackensteak</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Zanderfilet</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putenschnitzel</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Pommes, Bratensoße</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Gartenkräuter</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros</span><span class="dish-price">11,50&nbsp;€</span></div><p class="dish-desc">Nudeln, Käsesoße oder Pfeffersoße</p></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <p class="menu-note">Alle Preise in Euro inkl. MwSt. · Stand März 2025 · Änderungen vorbehalten. Gültig sind ausschließlich die Preise und Gerichte der aktuellen Karte im Restaurant.</p>
+    </div>
+  </section>
+
+  <figure class="photo-divider" style="--photo-img:url('images/grillteller.jpg')" role="img" aria-label="Gegrillter Grillteller mit Tzatziki, Pommes und Zitrone">
+    <figcaption>Frisch vom Grill</figcaption>
+  </figure>
+
+  <section id="ueber-uns" class="section section-soft about">
     <div class="container narrow">
-      <h2>Willkommen im Löwen</h2>
+      <div class="section-title">
+        <p class="eyebrow">Unsere Geschichte</p>
+        <h2>Über uns</h2>
+      </div>
       <p>Seit 1816 wird an dieser Adresse Gastfreundschaft gelebt – seit Kurzem mit neuem Schwung: Ein junges Gastronomen-Paar führt unser Traditionshaus und verbindet deftige deutsche Hausmannskost mit griechisch-mediterranen Grillspezialitäten. Dazu kühles Bauhöfer Bier vom Fass, ehrliche Küche und großzügige Portionen in unserem gemütlichen Biergarten.</p>
       <ul class="chips">
         <li>Biergarten</li>
@@ -65,88 +298,16 @@
     </div>
   </section>
 
-  <section id="speisekarte" class="menu">
+  <figure class="photo-divider" style="--photo-img:url('images/salat.jpg')" role="img" aria-label="Frischer Blattsalat mit Speck, Croutons und Sprossen">
+    <figcaption>Frisch &amp; hausgemacht</figcaption>
+  </figure>
+
+  <section id="kontakt" class="section">
     <div class="container">
-      <h2>Speisekarte</h2>
-      <p class="section-note">Eine kleine Auswahl unserer Klassiker – die vollständige Tageskarte mit allen Gerichten und Preisen erhalten Sie bei uns im Haus.</p>
-
-      <div class="menu-grid">
-        <div class="menu-cat">
-          <h3>Vorspeisen &amp; Salate</h3>
-          <ul>
-            <li>Gemischter Blattsalat mit Speck &amp; Croutons</li>
-            <li>Griechischer Bauernsalat</li>
-            <li>Tzatziki mit Fladenbrot</li>
-            <li>Tagessuppe</li>
-          </ul>
-        </div>
-
-        <div class="menu-cat">
-          <h3>Hausmannskost</h3>
-          <ul>
-            <li>Schnitzel Wiener Art mit Pommes</li>
-            <li>Zwiebelrostbraten mit Spätzle</li>
-            <li>Sauerbraten mit Rotkohl &amp; Knödel</li>
-            <li>Maultaschen in Röstzwiebeln</li>
-          </ul>
-        </div>
-
-        <div class="menu-cat">
-          <h3>Vom Grill – griechisch angehaucht</h3>
-          <ul>
-            <li>Gemischter Grillteller mit Tzatziki &amp; Pommes</li>
-            <li>Bifteki mit Feta gefüllt</li>
-            <li>Souvlaki vom Schwein</li>
-            <li>Lammkoteletts nach Art des Hauses</li>
-          </ul>
-        </div>
-
-        <div class="menu-cat">
-          <h3>Beilagen</h3>
-          <ul>
-            <li>Pommes frites</li>
-            <li>Bratkartoffeln</li>
-            <li>Reis</li>
-            <li>Feta überbacken</li>
-          </ul>
-        </div>
-
-        <div class="menu-cat">
-          <h3>Für unsere kleinen Gäste</h3>
-          <ul>
-            <li>Kindergerichte auf Anfrage</li>
-          </ul>
-        </div>
-
-        <div class="menu-cat">
-          <h3>Getränke</h3>
-          <ul>
-            <li>Bauhöfer Bier vom Fass (Pils &amp; Hefeweizen)</li>
-            <li>Hausweine</li>
-            <li>Alkoholfreie Getränke</li>
-          </ul>
-        </div>
+      <div class="section-title">
+        <p class="eyebrow">Wir freuen uns auf Sie</p>
+        <h2>Kontakt &amp; Anfahrt</h2>
       </div>
-    </div>
-  </section>
-
-  <section id="fotos" class="gallery">
-    <div class="container">
-      <h2>Bei uns</h2>
-      <div class="gallery-grid">
-        <figure class="photo" style="--photo-img: url('images/grillteller.jpg')" role="img" aria-label="Gegrillter Grillteller mit Tzatziki, Pommes und Zitrone">
-          <figcaption>Grillteller mit Tzatziki</figcaption>
-        </figure>
-        <figure class="photo" style="--photo-img: url('images/salat.jpg')" role="img" aria-label="Frischer Blattsalat mit Speck, Croutons und Sprossen">
-          <figcaption>Frischer Blattsalat</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section id="kontakt" class="contact">
-    <div class="container">
-      <h2>Kontakt &amp; Anfahrt</h2>
 
       <div class="contact-grid">
         <div class="contact-info">
@@ -169,7 +330,7 @@
           </table>
           <p class="hours-note">Änderungen und Feiertage vorbehalten – bitte im Zweifel kurz anrufen.</p>
 
-          <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">Route planen</a>
+          <a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">Route planen</a>
         </div>
 
         <div class="contact-map">
@@ -242,8 +403,6 @@
   </div>
 </footer>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
