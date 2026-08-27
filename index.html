@@ -2,21 +2,48 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Löwen Neureut – Gasthaus Zum Löwen in Karlsruhe</title>
 <meta name="description" content="Traditionsgasthaus seit 1816 in Karlsruhe-Neureut: deutsche Hausmannskost & griechisch-mediterrane Grillspezialitäten, gemütlicher Biergarten mit Bauhöfer Bier vom Fass. Neureuter Hauptstraße 243.">
-<meta name="theme-color" content="#1b1613">
+<meta name="theme-color" content="#1c1712">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Löwen Neureut – Gasthaus Zum Löwen">
+<meta property="og:description" content="Traditionsgasthaus seit 1816 in Karlsruhe-Neureut: deutsche Hausmannskost & griechisch-mediterrane Grillspezialitäten.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%81%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/fraunces-normal.woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Löwen Neureut – Gasthaus Zum Löwen",
+  "servesCuisine": ["German", "Greek", "Mediterranean"],
+  "priceRange": "€€",
+  "telephone": "+49-721-96146900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Neureuter Hauptstraße 243",
+    "postalCode": "76149",
+    "addressLocality": "Karlsruhe",
+    "addressCountry": "DE"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "11:00", "closes": "14:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "23:00" }
+  ]
+}
+</script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<header class="site-header">
+<header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="#top" class="brand">
-      <svg class="logo-mark" viewBox="0 0 60 60" width="32" height="32" aria-hidden="true">
+      <svg class="logo-mark" viewBox="0 0 60 60" width="30" height="30" aria-hidden="true">
         <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
         <circle cx="30" cy="30" r="9" fill="currentColor"/>
         <g fill="currentColor">
@@ -40,42 +67,64 @@
       <a href="#ueber-uns">Über uns</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="btn btn-primary btn-call" href="tel:+4972196146900">
-      <span aria-hidden="true">📞</span> 0721&nbsp;96&nbsp;14&nbsp;69&nbsp;00
-    </a>
+    <div class="header-actions">
+      <a class="btn btn-outline btn-call" href="tel:+4972196146900">0721 96 14 69 00</a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-drawer" id="nav-drawer">
+    <a href="#speisekarte">Speisekarte</a>
+    <a href="#ueber-uns">Über uns</a>
+    <a href="#kontakt">Kontakt</a>
+    <a class="btn btn-primary" href="tel:+4972196146900">📞 0721 96 14 69 00</a>
   </div>
 </header>
 
 <main id="main">
 
   <section id="top" class="hero">
-    <div class="hero-photo" style="--photo-img:url('images/biergarten.jpg')" role="img" aria-label="Sonniger Biergarten des Löwen Neureut mit Sonnenschirmen, Holztischen und Bänken"></div>
+    <div class="hero-media">
+      <!-- Echtes Bild einsetzen: dominante Außenansicht oder Biergarten bei Sonnenschein, Querformat, mind. 1600×1400px -->
+      <img src="images/hero-biergarten.jpg" alt="Biergarten des Löwen Neureut mit Sonnenschirmen und Holzbänken" loading="eager" fetchpriority="high" data-fallback>
+    </div>
     <div class="hero-content container">
-      <p class="eyebrow">Gasthaus seit 1816</p>
-      <h1>Löwen&nbsp;Neureut</h1>
-      <p class="hero-tagline">Deutsche Hausmannskost &amp; griechisch-mediterrane Grillspezialitäten</p>
-
-      <ul class="hero-facts">
-        <li><span aria-hidden="true">📍</span> Neureuter Hauptstraße 243, 76149 Karlsruhe</li>
-        <li><span aria-hidden="true">🕒</span> Mo–Fr 11–14 &amp; 17–23 Uhr · Sa 17–23 Uhr · So Ruhetag</li>
-      </ul>
-
+      <p class="eyebrow">Gasthaus in Neureut · seit 1816</p>
+      <h1>Löwen Neureut</h1>
+      <p class="hero-tagline">Deutsche Hausmannskost &amp; griechisch-mediterrane Spezialitäten.</p>
+      <p class="hero-address">Neureuter Hauptstraße 243 · Karlsruhe</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:+4972196146900">Jetzt anrufen</a>
-        <a class="btn btn-secondary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">Route planen</a>
+        <a class="btn btn-primary" href="#speisekarte">Speisekarte ansehen</a>
+        <a class="btn btn-secondary" href="tel:+4972196146900">Jetzt anrufen</a>
       </div>
     </div>
   </section>
 
-  <section id="speisekarte" class="section">
-    <div class="container">
-      <div class="section-title">
-        <p class="eyebrow">Unsere Karte</p>
-        <h2>Speisekarte</h2>
+  <section class="section reveal">
+    <div class="container story-grid">
+      <div class="story-media">
+        <!-- Echtes Bild einsetzen: historische oder atmosphärische Aufnahme, z. B. Einfahrtsbogen mit Jahreszahl 1816 oder Gastraum, Hochformat 4:5 -->
+        <img src="images/story-tradition.jpg" alt="Historische Ansicht des Gasthauses Löwen Neureut" loading="lazy" data-fallback>
       </div>
-      <p class="menu-lead">Nach Kategorien geordnet – tippen Sie oben auf eine Kategorie oder blättern Sie mit den Pfeilen durch die Karte.</p>
+      <div>
+        <p class="eyebrow">Tradition in Neureut</p>
+        <p class="story-number"><span class="label">Seit</span><span class="figure">1816</span></p>
+        <div class="story-copy">
+          <p>Seit über 200 Jahren gehört der Löwen zu Neureut. Heute verbinden wir klassische deutsche Hausmannskost mit griechisch-mediterranen Spezialitäten – ehrlich gekocht, großzügig serviert und in entspannter Atmosphäre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="menu-card">
+  <section id="speisekarte" class="section section-soft">
+    <div class="container">
+      <div class="section-title menu-head center reveal">
+        <h2>Unsere Speisekarte</h2>
+        <p>Deutsche Klassiker, Grillgerichte &amp; mediterrane Spezialitäten.</p>
+      </div>
+
+      <div class="reveal">
         <div class="menu-tabs" role="tablist" aria-label="Speisekarten-Kategorien">
           <button role="tab" id="tab-vorspeisen-kalt" aria-controls="panel-vorspeisen-kalt" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Vorspeisen</button>
           <button role="tab" id="tab-vorspeisen-warm" aria-controls="panel-vorspeisen-warm" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Warme Vorspeisen</button>
@@ -273,62 +322,88 @@
 
         </div>
       </div>
-      <p class="menu-note">Alle Preise in Euro inkl. MwSt. · Stand März 2025 · Änderungen vorbehalten. Gültig sind ausschließlich die Preise und Gerichte der aktuellen Karte im Restaurant.</p>
+      <p class="menu-note reveal">Alle Preise in Euro inkl. MwSt. · Stand März 2025 · Änderungen vorbehalten. Gültig sind ausschließlich die Preise und Gerichte der aktuellen Karte im Restaurant.</p>
     </div>
   </section>
 
-  <figure class="photo-divider" style="--photo-img:url('images/grillteller.jpg')" role="img" aria-label="Gegrillter Grillteller mit Tzatziki, Pommes und Zitrone">
-    <figcaption>Frisch vom Grill</figcaption>
-  </figure>
+  <section class="food-break reveal">
+    <div class="food-break-media">
+      <!-- Echtes Bild einsetzen: starkes Foto eines Gerichts (z. B. Grillteller) oder des Restaurants, Querformat -->
+      <img src="images/grillteller.jpg" alt="Gegrillter Grillteller mit Tzatziki, Pommes und Zitrone" loading="lazy" data-fallback>
+    </div>
+    <blockquote>Ehrlich gekocht.<br>Großzügig serviert.</blockquote>
+  </section>
 
-  <section id="ueber-uns" class="section section-soft about">
-    <div class="container narrow">
-      <div class="section-title">
-        <p class="eyebrow">Unsere Geschichte</p>
-        <h2>Über uns</h2>
+  <section id="ueber-uns" class="section">
+    <div class="container about-grid">
+      <div class="about-media reveal">
+        <!-- Echtes Bild einsetzen: Gastraum oder Gastgeber/Team, Hochformat 4:5 -->
+        <img src="images/ueber-uns.jpg" alt="Gastraum des Löwen Neureut" loading="lazy" data-fallback>
       </div>
-      <p>Seit 1816 wird an dieser Adresse Gastfreundschaft gelebt – seit Kurzem mit neuem Schwung: Ein junges Gastronomen-Paar führt unser Traditionshaus und verbindet deftige deutsche Hausmannskost mit griechisch-mediterranen Grillspezialitäten. Dazu kühles Bauhöfer Bier vom Fass, ehrliche Küche und großzügige Portionen in unserem gemütlichen Biergarten.</p>
-      <ul class="chips">
-        <li>Biergarten</li>
-        <li>Kinderfreundlich</li>
-        <li>Hunde willkommen</li>
-        <li>Barrierefrei</li>
-        <li>Kostenlose Parkplätze</li>
-      </ul>
+      <div class="about-copy reveal">
+        <p class="eyebrow">Unsere Geschichte</p>
+        <h2>Tradition, die man schmeckt.</h2>
+        <p>Der Löwen ist ein echtes Familiengasthaus: bodenständig, herzlich und ohne Schnickschnack. Wir kochen, was wir selbst gerne essen – deutsche Klassiker neben herzhaften Grillgerichten – und sorgen dafür, dass sich jeder Gast bei uns wie zuhause fühlt.</p>
+        <ul class="feature-list">
+          <li>Seit 1816</li>
+          <li>Hausmannskost &amp; Grill</li>
+          <li>Familiengeführt</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft reveal">
+    <div class="container">
+      <div class="gallery-strip">
+        <figure class="gallery-photo">
+          <!-- Echtes Bild einsetzen: Außenansicht des Gasthauses -->
+          <img src="images/galerie-aussenansicht.jpg" alt="Außenansicht des Gasthauses Löwen Neureut" loading="lazy" data-fallback>
+        </figure>
+        <figure class="gallery-photo">
+          <!-- Echtes Bild einsetzen: Gastraum / Innenbereich -->
+          <img src="images/galerie-gastraum.jpg" alt="Gastraum im Löwen Neureut" loading="lazy" data-fallback>
+        </figure>
+        <figure class="gallery-photo">
+          <!-- Echtes Bild einsetzen: Gastgeber-Paar oder Team -->
+          <img src="images/galerie-team.jpg" alt="Das Team des Löwen Neureut" loading="lazy" data-fallback>
+        </figure>
+      </div>
     </div>
   </section>
 
   <section id="kontakt" class="section">
-    <div class="container">
-      <div class="section-title">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
         <p class="eyebrow">Wir freuen uns auf Sie</p>
-        <h2>Kontakt &amp; Anfahrt</h2>
+        <h3>Kontakt &amp; Anfahrt</h3>
+
+        <ul class="contact-list">
+          <li>
+            <span class="label">Adresse</span>
+            <span class="value">Neureuter Hauptstraße 243<br>76149 Karlsruhe</span>
+          </li>
+          <li>
+            <span class="label">Telefon</span>
+            <span class="value"><a href="tel:+4972196146900">0721 96 14 69 00</a></span>
+          </li>
+          <li>
+            <span class="label">Öffnungszeiten</span>
+            <span class="value">Mo–Fr 11–14 &amp; 17–23 Uhr<br>Sa 17–23 Uhr<small>Änderungen &amp; Feiertage vorbehalten</small></span>
+          </li>
+          <li>
+            <span class="label">Ruhetag</span>
+            <span class="value">Sonntag</span>
+          </li>
+        </ul>
+
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="tel:+4972196146900">Jetzt anrufen</a>
+          <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">Route planen</a>
+        </div>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Löwen Neureut</h3>
-          <p>Gasthaus Zum Löwen<br>
-          Neureuter Hauptstraße 243<br>
-          76149 Karlsruhe</p>
-
-          <p>
-            <a class="link-strong" href="tel:+4972196146900">📞 0721 96 14 69 00</a>
-          </p>
-
-          <table class="hours-table">
-            <caption class="visually-hidden">Öffnungszeiten</caption>
-            <tbody>
-              <tr><th scope="row">Montag – Freitag</th><td>11:00–14:00 &amp; 17:00–23:00 Uhr</td></tr>
-              <tr><th scope="row">Samstag</th><td>17:00–23:00 Uhr</td></tr>
-              <tr><th scope="row">Sonntag</th><td>Ruhetag</td></tr>
-            </tbody>
-          </table>
-          <p class="hours-note">Änderungen und Feiertage vorbehalten – bitte im Zweifel kurz anrufen.</p>
-
-          <a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">Route planen</a>
-        </div>
-
+      <div class="reveal">
         <div class="contact-map">
           <iframe
             title="Standort Löwen Neureut auf Google Maps"
@@ -337,6 +412,7 @@
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
+        <p class="map-note">Die Karte wird von Google Maps geladen. Beim Anzeigen wird eine Verbindung zu Google-Servern hergestellt – mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
       </div>
     </div>
   </section>
@@ -345,59 +421,38 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div>
-      <strong>Löwen Neureut</strong> · Neureuter Hauptstraße 243 · 76149 Karlsruhe · <a href="tel:+4972196146900">0721 96 14 69 00</a>
+    <div class="footer-details">
+      <p class="footer-brand">Löwen Neureut</p>
+      <p>Neureuter Hauptstraße 243 · 76149 Karlsruhe</p>
+      <p><a href="tel:+4972196146900">0721 96 14 69 00</a></p>
+      <p>Mo–Fr 11–14 &amp; 17–23 Uhr · Sa 17–23 Uhr · So Ruhetag</p>
     </div>
-    <nav class="footer-links" aria-label="Rechtliches">
-      <a href="#impressum">Impressum</a>
-      <a href="#datenschutz">Datenschutz</a>
+    <nav class="footer-nav" aria-label="Footer-Navigation">
+      <a href="#speisekarte">Speisekarte</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
     </nav>
-    <p class="copyright">© <span id="year">2026</span> Löwen Neureut</p>
   </div>
-
-  <div id="impressum" class="legal container narrow">
-    <h2>Impressum</h2>
-    <p>Angaben gemäß § 5 TMG</p>
-    <p>
-      Löwen Neureut – Gasthaus Zum Löwen<br>
-      <mark class="todo">[Vor- und Nachname der Inhaberin/des Inhabers einfügen]</mark><br>
-      Neureuter Hauptstraße 243<br>
-      76149 Karlsruhe
-    </p>
-    <p>
-      <strong>Kontakt</strong><br>
-      Telefon: 0721 96 14 69 00<br>
-      E-Mail: <mark class="todo">[E-Mail-Adresse einfügen]</mark>
-    </p>
-    <p>
-      Umsatzsteuer-Identifikationsnummer: <mark class="todo">[falls vorhanden, gemäß § 27a UStG einfügen]</mark>
-    </p>
-    <p>
-      Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:<br>
-      <mark class="todo">[Name wie oben einfügen]</mark>
-    </p>
-  </div>
-
-  <div id="datenschutz" class="legal container narrow">
-    <h2>Datenschutzerklärung</h2>
-
-    <h3>Verantwortlicher</h3>
-    <p>
-      Löwen Neureut – Gasthaus Zum Löwen<br>
-      <mark class="todo">[Name der/des Inhaberin/Inhabers]</mark>, Neureuter Hauptstraße 243, 76149 Karlsruhe<br>
-      Telefon: 0721 96 14 69 00 · E-Mail: <mark class="todo">[E-Mail-Adresse einfügen]</mark>
-    </p>
-
-    <h3>Aufruf dieser Website</h3>
-    <p>Beim Aufruf dieser Website erhebt unser Hosting-Anbieter automatisch technische Zugriffsdaten (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite), wie es bei jedem Website-Besuch technisch üblich ist. Diese Website verwendet keine Cookies, keine Analyse- oder Trackingtools und keine Kontaktformulare.</p>
-
-    <h3>Google Maps</h3>
-    <p>Im Bereich „Kontakt &amp; Anfahrt“ binden wir eine Karte von Google Maps ein. Beim Laden der Karte wird eine Verbindung zu Servern von Google hergestellt, wobei auch Ihre IP-Adresse an Google übertragen werden kann. Weitere Informationen zum Umgang mit Ihren Daten finden Sie in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
-
-    <h3>Ihre Rechte</h3>
-    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde. Bei Fragen zum Datenschutz wenden Sie sich gerne an die oben genannte E-Mail-Adresse.</p>
-  </div>
+  <div class="container footer-bottom">© <span id="year">2026</span> Löwen Neureut</div>
 </footer>
+
+<nav class="mobile-bar" aria-label="Schnellzugriff">
+  <div class="mobile-bar-inner">
+    <a class="call" href="tel:+4972196146900">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Anrufen
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Route
+    </a>
+    <a href="#speisekarte">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Speisekarte
+    </a>
+  </div>
+</nav>
 
 <script src="js/main.js"></script>
 </body>
