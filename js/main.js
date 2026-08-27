@@ -10,6 +10,13 @@
   var nextBtn = document.querySelector('[data-menu-next]');
   var countEl = document.querySelector('[data-menu-count]');
 
+  function centerTabInScroller(tab) {
+    var tabRect = tab.getBoundingClientRect();
+    var listRect = tablist.getBoundingClientRect();
+    var offset = (tabRect.left + tabRect.right) / 2 - (listRect.left + listRect.right) / 2;
+    tablist.scrollLeft += offset;
+  }
+
   function activate(index, opts) {
     opts = opts || {};
     index = Math.max(0, Math.min(tabs.length - 1, index));
@@ -24,7 +31,7 @@
     if (opts.focus) {
       tabs[index].focus();
     }
-    tabs[index].scrollIntoView({ inline: 'center', block: 'nearest' });
+    centerTabInScroller(tabs[index]);
 
     if (prevBtn) prevBtn.disabled = index === 0;
     if (nextBtn) nextBtn.disabled = index === tabs.length - 1;
