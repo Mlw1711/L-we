@@ -77,6 +77,38 @@
   activate(0);
 })();
 
+// Speisekarte / Mittagskarte mode switch
+(function () {
+  var modeBtns = Array.prototype.slice.call(document.querySelectorAll('.mode-btn'));
+  var speisekarteView = document.getElementById('menu-speisekarte-view');
+  var mittagView = document.getElementById('menu-mittag-view');
+  if (!modeBtns.length || !speisekarteView || !mittagView) return;
+
+  modeBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var isMittag = btn.dataset.mode === 'mittag';
+      modeBtns.forEach(function (b) { b.setAttribute('aria-selected', String(b === btn)); });
+      speisekarteView.hidden = isMittag;
+      mittagView.hidden = !isMittag;
+    });
+  });
+})();
+
+// Impressum / Datenschutz: click to expand in place
+(function () {
+  var toggles = document.querySelectorAll('[data-legal-toggle]');
+  toggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.getElementById(btn.dataset.legalToggle);
+      if (!panel) return;
+      var willOpen = panel.hidden;
+      panel.hidden = !willOpen;
+      btn.setAttribute('aria-expanded', String(willOpen));
+      if (willOpen) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+
 // Mobile navigation drawer
 (function () {
   var header = document.getElementById('site-header');

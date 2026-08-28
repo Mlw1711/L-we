@@ -369,7 +369,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* Generic section rhythm */
 
-.section { padding: clamp(4rem, 9vw, 7rem) 0; }
+.section { padding: clamp(4rem, 9vw, 7rem) 0; scroll-margin-top: 90px; }
 .section-soft { background: var(--cream-soft); }
 .section-dark { background: var(--dark); color: var(--on-dark); }
 .section-dark h2, .section-dark h1 { color: #fff; }
@@ -561,6 +561,36 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 .menu-head { text-align: center; }
 .menu-head p { color: var(--ink-soft); }
 
+.menu-mode {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 2.4rem;
+}
+
+.mode-btn {
+  appearance: none;
+  cursor: pointer;
+  font: inherit;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75em 1.7em;
+  border-radius: 999px;
+  border: 1.5px solid var(--hairline);
+  background: var(--paper);
+  color: var(--ink-soft);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.mode-btn:hover { border-color: var(--accent); color: var(--ink); }
+
+.mode-btn[aria-selected="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
 .menu-tabs {
   display: flex;
   gap: 0.4rem;
@@ -573,9 +603,9 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   scrollbar-width: thin;
 }
 
-@media (min-width: 960px) {
-  .menu-tabs { justify-content: center; }
-}
+/* Deliberately always flex-start, never centered: centering an
+   overflowing flex row makes it overflow on both sides, which clips
+   the first tab's label even while scrollLeft reports 0. */
 
 .menu-tab {
   flex: 0 0 auto;
@@ -643,12 +673,20 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 .panel-note {
-  background: var(--cream-soft);
+  background: var(--paper);
+  border: 1px solid var(--hairline);
   color: var(--ink-soft);
   padding: 0.7rem 1rem;
   border-radius: 6px;
   font-size: 0.85rem;
   margin: 0 0 1.3rem;
+}
+
+.panel-note.center {
+  max-width: 34ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .dish-list {
@@ -796,6 +834,20 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 
 .footer-nav a:hover { color: #fff; }
 
+.footer-nav-toggle {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  color: var(--on-dark-soft);
+  font-size: 0.9rem;
+}
+
+.footer-nav-toggle:hover,
+.footer-nav-toggle[aria-expanded="true"] { color: #fff; }
+
 .footer-bottom {
   border-top: 1px solid rgba(245, 247, 251, 0.12);
   padding: 1.25rem 0;
@@ -806,6 +858,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 /* Legal sections (Impressum / Datenschutz, inside the footer) */
 
 .legal {
+  scroll-margin-top: 90px;
   padding: 2.75rem 0;
   border-top: 1px solid rgba(245, 247, 251, 0.1);
   font-size: 0.92rem;

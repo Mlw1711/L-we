@@ -130,7 +130,12 @@
         <p>Deutsche Klassiker, Grillgerichte &amp; mediterrane Spezialitäten.</p>
       </div>
 
-      <div class="reveal">
+      <div class="menu-mode reveal">
+        <button type="button" class="mode-btn" id="mode-speisekarte" aria-selected="true" data-mode="speisekarte">Speisekarte</button>
+        <button type="button" class="mode-btn" id="mode-mittag" aria-selected="false" data-mode="mittag">Mittagskarte</button>
+      </div>
+
+      <div id="menu-speisekarte-view" class="reveal">
         <div class="menu-tabs" role="tablist" aria-label="Speisekarten-Kategorien">
           <button role="tab" id="tab-vorspeisen-kalt" aria-controls="panel-vorspeisen-kalt" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Vorspeisen</button>
           <button role="tab" id="tab-vorspeisen-warm" aria-controls="panel-vorspeisen-warm" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Warme Vorspeisen</button>
@@ -143,12 +148,11 @@
           <button role="tab" id="tab-beilagen" aria-controls="panel-beilagen" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Beilagen</button>
           <button role="tab" id="tab-sossen" aria-controls="panel-sossen" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Soßen</button>
           <button role="tab" id="tab-desserts" aria-controls="panel-desserts" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Desserts</button>
-          <button role="tab" id="tab-mittag" aria-controls="panel-mittag" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Mittagskarte</button>
         </div>
 
         <div class="menu-pager">
           <button type="button" class="pager-btn" data-menu-prev aria-label="Vorherige Kategorie">‹</button>
-          <span class="pager-count" data-menu-count>1 / 12</span>
+          <span class="pager-count" data-menu-count>1 / 11</span>
           <button type="button" class="pager-btn" data-menu-next aria-label="Nächste Kategorie">›</button>
         </div>
 
@@ -302,32 +306,32 @@
             </ul>
           </div>
 
-          <div role="tabpanel" id="panel-mittag" aria-labelledby="tab-mittag" class="menu-panel" hidden>
-            <h3>Mittagskarte</h3>
-            <p class="panel-note">Nur mittags, Montag–Freitag 11:00–14:00 Uhr.</p>
-            <ul class="dish-list is-long">
-              <li class="dish"><div class="dish-row"><span class="dish-name">Rinderleber</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Schnitzel</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Hacksteak</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros-Salat</span><span class="dish-price">9,90&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Rotbarschfilet</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Bauernspieß</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Putensalat</span><span class="dish-price">9,90&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Putensteak</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Kräuterbutter, Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Bifteki</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Knoblauchspieß</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinelenden</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Pfeffersoße</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Schweinenackensteak</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Zanderfilet</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Putenschnitzel</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Pommes, Bratensoße</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Gartenkräuter</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Gyros</span><span class="dish-price">11,50&nbsp;€</span></div><p class="dish-desc">Nudeln, Käsesoße oder Pfeffersoße</p></li>
-            </ul>
-          </div>
-
         </div>
       </div>
+
+      <div id="menu-mittag-view" class="reveal" hidden>
+        <p class="panel-note center">Nur mittags, Montag–Freitag 11:00–14:00 Uhr.</p>
+        <ul class="dish-list is-long">
+          <li class="dish"><div class="dish-row"><span class="dish-name">Rinderleber</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Schnitzel</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Hacksteak</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Gyros-Salat</span><span class="dish-price">9,90&nbsp;€</span></div></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Rotbarschfilet</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Bauernspieß</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Gyros</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Putensalat</span><span class="dish-price">9,90&nbsp;€</span></div></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Putensteak</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Kräuterbutter, Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Bifteki</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Knoblauchspieß</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Schweinelenden</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Pfeffersoße</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Schweinenackensteak</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Pommes</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Zanderfilet</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Putenschnitzel</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Pommes, Bratensoße</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Gartenkräuter</p></li>
+          <li class="dish"><div class="dish-row"><span class="dish-name">Gyros</span><span class="dish-price">11,50&nbsp;€</span></div><p class="dish-desc">Nudeln, Käsesoße oder Pfeffersoße</p></li>
+        </ul>
+      </div>
+
       <p class="menu-note reveal">Alle Preise in Euro inkl. MwSt. · Stand März 2025 · Änderungen vorbehalten. Gültig sind ausschließlich die Preise und Gerichte der aktuellen Karte im Restaurant.</p>
     </div>
   </section>
@@ -432,12 +436,12 @@
     <nav class="footer-nav" aria-label="Footer-Navigation">
       <a href="#speisekarte">Speisekarte</a>
       <a href="#kontakt">Kontakt</a>
-      <a href="#impressum">Impressum</a>
-      <a href="#datenschutz">Datenschutz</a>
+      <button type="button" class="footer-nav-toggle" data-legal-toggle="impressum" aria-expanded="false" aria-controls="impressum">Impressum</button>
+      <button type="button" class="footer-nav-toggle" data-legal-toggle="datenschutz" aria-expanded="false" aria-controls="datenschutz">Datenschutz</button>
     </nav>
   </div>
 
-  <div id="impressum" class="legal container narrow">
+  <div id="impressum" class="legal container narrow" hidden>
     <h2>Impressum</h2>
     <p>Angaben gemäß § 5 TMG</p>
     <p>
@@ -460,7 +464,7 @@
     </p>
   </div>
 
-  <div id="datenschutz" class="legal container narrow">
+  <div id="datenschutz" class="legal container narrow" hidden>
     <h2>Datenschutzerklärung</h2>
 
     <h3>Verantwortlicher</h3>
