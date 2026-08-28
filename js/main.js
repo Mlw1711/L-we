@@ -1,3 +1,21 @@
+// Header logo: swap the placeholder emblem for the real logo file only
+// once it has actually loaded, so a missing file never shows a broken
+// image icon in the header.
+(function () {
+  var mark = document.getElementById('logo-mark');
+  if (!mark) return;
+  var src = 'images/loewen-neureut-logo.png';
+  var probe = new Image();
+  probe.onload = function () {
+    mark.innerHTML = '';
+    var img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Löwen Neureut';
+    mark.appendChild(img);
+  };
+  probe.src = src;
+})();
+
 (function () {
   var tablist = document.querySelector('.menu-tabs');
   if (!tablist) return;

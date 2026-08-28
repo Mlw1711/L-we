@@ -43,20 +43,25 @@
 <header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="#top" class="brand">
-      <svg class="logo-mark" viewBox="0 0 60 60" width="30" height="30" aria-hidden="true">
-        <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
-        <circle cx="30" cy="30" r="9" fill="currentColor"/>
-        <g fill="currentColor">
-          <polygon points="30,1 33,10 27,10"/>
-          <polygon points="30,59 33,50 27,50"/>
-          <polygon points="1,30 10,33 10,27"/>
-          <polygon points="59,30 50,33 50,27"/>
-          <polygon points="9,9 16,14 12,17"/>
-          <polygon points="51,9 44,14 48,17"/>
-          <polygon points="9,51 16,46 12,43"/>
-          <polygon points="51,51 44,46 48,43"/>
-        </g>
-      </svg>
+      <!-- Echtes Logo: images/loewen-neureut-logo.png. Bis es existiert, bleibt
+           dieses einfache Löwen-Emblem als Platzhalter sichtbar (js/main.js
+           tauscht automatisch, sobald die Datei geladen werden kann). -->
+      <span class="logo-mark" id="logo-mark">
+        <svg viewBox="0 0 60 60" width="30" height="30" aria-hidden="true">
+          <circle cx="30" cy="30" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="30" cy="30" r="9" fill="currentColor"/>
+          <g fill="currentColor">
+            <polygon points="30,1 33,10 27,10"/>
+            <polygon points="30,59 33,50 27,50"/>
+            <polygon points="1,30 10,33 10,27"/>
+            <polygon points="59,30 50,33 50,27"/>
+            <polygon points="9,9 16,14 12,17"/>
+            <polygon points="51,9 44,14 48,17"/>
+            <polygon points="9,51 16,46 12,43"/>
+            <polygon points="51,51 44,46 48,43"/>
+          </g>
+        </svg>
+      </span>
       <span class="brand-text">
         <span class="brand-name">Löwen Neureut</span>
         <span class="brand-sub">Gasthaus Zum Löwen</span>
