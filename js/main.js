@@ -153,13 +153,29 @@
   });
 })();
 
+// Impressionen carousel: prev/next buttons scroll the track by roughly
+// one screen; native touch/trackpad swipe on .carousel-track keeps working.
+(function () {
+  var track = document.querySelector('[data-carousel-track]');
+  var prevBtn = document.querySelector('[data-carousel-prev]');
+  var nextBtn = document.querySelector('[data-carousel-next]');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function scrollByScreen(direction) {
+    track.scrollBy({ left: track.clientWidth * 0.85 * direction, behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', function () { scrollByScreen(-1); });
+  nextBtn.addEventListener('click', function () { scrollByScreen(1); });
+})();
+
 // Graceful fallback for missing photos: keep the styled placeholder
 // background instead of showing a broken-image icon.
 (function () {
   var imgs = document.querySelectorAll('img[data-fallback]');
   imgs.forEach(function (img) {
     function markMissing() {
-      var holder = img.closest('.hero, .story-media, .about-media, .gallery-photo, .food-break');
+      var holder = img.closest('.hero, .carousel-item, .food-break');
       if (holder) holder.classList.add('img-missing');
     }
     // The browser may start loading (and failing) an image before this
