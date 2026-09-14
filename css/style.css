@@ -298,17 +298,16 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 
 .hero {
   position: relative;
-  /* The sign photo is nearly square, so object-fit: cover crops it
-     vertically to fill this wide/short banner. A pure vh height makes
-     that crop unstable across monitor widths: a wide-but-not-very-tall
-     window stays just as short as a laptop one, so the same
-     object-position crops much deeper into the photo and starts cutting
-     off the "Löwen" lettering. Flooring the height with a vw term as well
-     keeps the crop window a roughly constant fraction of the image
-     regardless of viewport width - but that floor must itself be capped
-     well below 100vh, or on a wide-but-short window it makes the hero
-     taller than the viewport, pushing its own content below the fold. */
-  min-height: min(max(82vh, 52vw), 88vh);
+  /* The sign photo is nearly square (church spire near the very top,
+     "Löwen" lettering near the very bottom) but this banner is much
+     wider than tall, so object-fit: cover has to crop a lot of it away
+     vertically to fill the width with no letterboxing. Tying the height
+     to a fraction of the width (instead of a viewport-height banner)
+     keeps that crop window a large, constant fraction of the photo at
+     any screen width, so the church and the full lettering both stay
+     in frame together - at the cost of the hero running taller than one
+     screen on wide monitors, which is the deliberate trade-off here. */
+  aspect-ratio: 5 / 4;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -316,7 +315,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 @media (max-width: 640px) {
-  .hero { min-height: 58vh; }
+  .hero { aspect-ratio: auto; min-height: 58vh; }
 }
 
 .hero-media {
@@ -329,17 +328,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 60%;
-}
-
-/* Past this aspect ratio the 88vh cap above is the binding constraint
-   (52vw would want the hero taller than is safe), so the crop window
-   gets too short to keep both the illustration and the full "Löwen"
-   lettering in frame at the position above. Re-aim lower to guarantee
-   the lettering stays complete - the illustration is the one to give
-   up here, not the shop name. */
-@media (min-aspect-ratio: 17/10) {
-  .hero-media img { object-position: center 93%; }
+  object-position: center 45%;
 }
 
 .hero-media::after {
