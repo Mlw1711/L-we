@@ -298,16 +298,15 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 
 .hero {
   position: relative;
-  /* The sign photo is nearly square (church spire near the very top,
-     "Löwen" lettering near the very bottom) but this banner is much
-     wider than tall, so object-fit: cover has to crop a lot of it away
-     vertically to fill the width with no letterboxing. Tying the height
-     to a fraction of the width (instead of a viewport-height banner)
-     keeps that crop window a large, constant fraction of the photo at
-     any screen width, so the church and the full lettering both stay
-     in frame together - at the cost of the hero running taller than one
-     screen on wide monitors, which is the deliberate trade-off here. */
-  aspect-ratio: 5 / 4;
+  /* Match the hero's box to the source photo's own proportions exactly.
+     Any shorter/wider ratio forces object-fit: cover to crop part of the
+     photo away (church spire near the top, "Löwen" lettering near the
+     bottom - previous attempts kept losing one or the other, or just
+     felt zoomed in from the crop itself). At this exact ratio, cover
+     shows the complete, uncropped photo at full width with nothing
+     trimmed - the confirmed trade-off is a hero taller than one screen
+     on wide monitors, needing a short scroll to see all of it. */
+  aspect-ratio: 1245 / 1278;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -328,7 +327,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 45%;
+  object-position: center;
 }
 
 .hero-media::after {
