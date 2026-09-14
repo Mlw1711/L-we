@@ -300,12 +300,15 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   position: relative;
   /* The sign photo is nearly square, so object-fit: cover crops it
      vertically to fill this wide/short banner. A pure vh height makes
-     that crop unstable across monitor widths: an ultra-wide window stays
-     just as short as a laptop one, so the same object-position crops much
-     deeper into the photo and starts cutting off the "Löwen" lettering.
-     Flooring the height with a vw term as well keeps the crop window a
-     roughly constant fraction of the image regardless of viewport width. */
-  min-height: max(82vh, 52vw);
+     that crop unstable across monitor widths: a wide-but-not-very-tall
+     window stays just as short as a laptop one, so the same
+     object-position crops much deeper into the photo and starts cutting
+     off the "Löwen" lettering. Flooring the height with a vw term as well
+     keeps the crop window a roughly constant fraction of the image
+     regardless of viewport width - but that floor must itself be capped
+     well below 100vh, or on a wide-but-short window it makes the hero
+     taller than the viewport, pushing its own content below the fold. */
+  min-height: min(max(82vh, 52vw), 88vh);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -327,6 +330,16 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   height: 100%;
   object-fit: cover;
   object-position: center 60%;
+}
+
+/* Past this aspect ratio the 88vh cap above is the binding constraint
+   (52vw would want the hero taller than is safe), so the crop window
+   gets too short to keep both the illustration and the full "Löwen"
+   lettering in frame at the position above. Re-aim lower to guarantee
+   the lettering stays complete - the illustration is the one to give
+   up here, not the shop name. */
+@media (min-aspect-ratio: 17/10) {
+  .hero-media img { object-position: center 93%; }
 }
 
 .hero-media::after {
