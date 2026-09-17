@@ -298,15 +298,17 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 
 .hero {
   position: relative;
-  /* Match the hero's box to the source photo's own proportions exactly.
-     Any shorter/wider ratio forces object-fit: cover to crop part of the
-     photo away (church spire near the top, "Löwen" lettering near the
-     bottom - previous attempts kept losing one or the other, or just
-     felt zoomed in from the crop itself). At this exact ratio, cover
-     shows the complete, uncropped photo at full width with nothing
-     trimmed - the confirmed trade-off is a hero taller than one screen
-     on wide monitors, needing a short scroll to see all of it. */
+  /* The full, uncropped photo (matching its own 1245:1278 ratio exactly)
+     used to be the priority - but on wide/short desktop monitors that
+     made the hero taller than the viewport, pushing the sign's "Löwen"
+     lettering (the whole point of the photo) below the fold until the
+     visitor scrolled. Capping both dimensions instead keeps the hero
+     within one screen; object-position below biases the resulting crop
+     to lose sky/church-spire off the top rather than the lettering. */
   aspect-ratio: 1245 / 1278;
+  max-width: 1700px;
+  max-height: 88vh;
+  margin: 0 auto;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -314,7 +316,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 @media (max-width: 640px) {
-  .hero { aspect-ratio: auto; min-height: 58vh; }
+  .hero { aspect-ratio: auto; min-height: 58vh; max-height: none; }
 }
 
 .hero-media {
@@ -327,7 +329,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 88%;
 }
 
 .hero-media::after {
