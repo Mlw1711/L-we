@@ -440,14 +440,6 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   background: linear-gradient(150deg, #1b3355 0%, #0b1830 100%);
 }
 
-/* A landscape source photo (e.g. a wide terrace shot) would be cropped
-   down to a sliver in the default portrait card, so it gets a wider card
-   with a matching aspect ratio instead of fighting the 4/5 default. */
-.carousel-item.wide {
-  width: min(92vw, 480px);
-  aspect-ratio: 16 / 9;
-}
-
 .carousel-item img {
   width: 100%;
   height: 100%;

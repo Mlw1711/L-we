@@ -169,19 +169,36 @@
   nextBtn.addEventListener('click', function () { scrollByScreen(1); });
 
   // Auto-advance through the photos, looping back to the start, for as
-  // long as nobody has touched the carousel themselves and it's actually
-  // on screen. The moment a visitor scrolls, swipes, or uses the prev/next
-  // buttons, autoplay stops for good - it should never fight their control.
+  // long as nobody has scrolled/swiped the carousel themselves and it's
+  // actually on screen. Autoplay stops for good the moment the *track*
+  // itself scrolls for a reason other than our own autoAdvance/button
+  // calls - detected via a native 'scroll' event on the track guarded by
+  // an "own scroll" flag, not via pointerdown/touchstart/wheel on the
+  // element: those also fire for an ordinary vertical page-scroll or a
+  // tap that merely passes over the carousel, which isn't the visitor
+  // taking control of it and was wrongly killing autoplay before it
+  // ever got a chance to run.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var AUTO_ADVANCE_MS = 4500;
     var timer = null;
     var userTookOver = false;
+    var ownScroll = false;
+    var ownScrollTimeout = null;
+
+    function markOwnScroll() {
+      ownScroll = true;
+      clearTimeout(ownScrollTimeout);
+      // Smooth scrolling fires several 'scroll' events over ~300-500ms;
+      // keep the guard up long enough to cover all of them.
+      ownScrollTimeout = setTimeout(function () { ownScroll = false; }, 700);
+    }
 
     function atEnd() {
       return track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
     }
 
     function autoAdvance() {
+      markOwnScroll();
       if (atEnd()) {
         track.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
@@ -202,9 +219,9 @@
       }
     }
 
-    ['pointerdown', 'touchstart', 'wheel'].forEach(function (evt) {
-      track.addEventListener(evt, stopForGood, { passive: true, once: true });
-    });
+    track.addEventListener('scroll', function () {
+      if (!ownScroll) stopForGood();
+    }, { passive: true });
     prevBtn.addEventListener('click', stopForGood, { once: true });
     nextBtn.addEventListener('click', stopForGood, { once: true });
 
