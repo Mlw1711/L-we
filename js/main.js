@@ -168,59 +168,117 @@
   prevBtn.addEventListener('click', function () { scrollByScreen(-1); });
   nextBtn.addEventListener('click', function () { scrollByScreen(1); });
 
-  // Auto-advance through the photos, looping back to the start, for as
-  // long as nobody has scrolled/swiped the carousel themselves and it's
-  // actually on screen. Autoplay stops for good the moment the *track*
-  // itself scrolls for a reason other than our own autoAdvance/button
-  // calls - detected via a native 'scroll' event on the track guarded by
-  // an "own scroll" flag, not via pointerdown/touchstart/wheel on the
-  // element: those also fire for an ordinary vertical page-scroll or a
-  // tap that merely passes over the carousel, which isn't the visitor
-  // taking control of it and was wrongly killing autoplay before it
-  // ever got a chance to run.
+  // Drift the photos past slowly and continuously, like a real carousel,
+  // looping back to the start, for as long as nobody has scrolled/swiped
+  // the carousel themselves and it's actually on screen. Because this
+  // writes to scrollLeft every animation frame instead of in isolated
+  // bursts, "was this scroll our own doing" can't be answered by a
+  // timing guard (there's no gap between our writes to tell a real one
+  // apart) - instead each frame compares the track's actual scrollLeft
+  // against the value we last set it to. A match means nothing else has
+  // touched it since; any mismatch means the visitor grabbed the track
+  // themselves (touch, trackpad, drag), and autoplay stops for good.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var AUTO_ADVANCE_MS = 4500;
-    var timer = null;
+    var SPEED = 25; // px/second - slow, ambient drift
+    var REWIND_MS = 700; // duration of the loop-back-to-start animation
+    var rafId = null;
+    var lastTs = null;
+    var accumulated = 0; // precise float position; scrollLeft itself rounds
+                          // to an integer, so sub-pixel per-frame increments
+                          // (well under 1px at this speed) would otherwise
+                          // get truncated away on every single write and the
+                          // track would never visibly move at all.
+    var expected = null;
+    var rewinding = false;
+    var rewindStartTs = null;
+    var rewindFrom = 0;
     var userTookOver = false;
-    var ownScroll = false;
-    var ownScrollTimeout = null;
-
-    function markOwnScroll() {
-      ownScroll = true;
-      clearTimeout(ownScrollTimeout);
-      // Smooth scrolling fires several 'scroll' events over ~300-500ms;
-      // keep the guard up long enough to cover all of them.
-      ownScrollTimeout = setTimeout(function () { ownScroll = false; }, 700);
-    }
+    var visible = false;
 
     function atEnd() {
       return track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
     }
 
-    function autoAdvance() {
-      markOwnScroll();
-      if (atEnd()) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        scrollByScreen(1);
-      }
+    function externalScrollHappened() {
+      return expected !== null && Math.abs(track.scrollLeft - expected) > 2;
     }
 
-    function startAuto() {
-      if (timer || userTookOver) return;
-      timer = setInterval(autoAdvance, AUTO_ADVANCE_MS);
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function stopAuto() {
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+      // Restore the CSS-defined mandatory snap for manual interaction.
+      track.style.scrollSnapType = '';
     }
 
     function stopForGood() {
       userTookOver = true;
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
+      stopAuto();
+    }
+
+    function tick(ts) {
+      if (externalScrollHappened()) { stopForGood(); return; }
+
+      if (lastTs === null) {
+        // First frame after a (re)start: just sync up, don't move yet.
+        lastTs = ts;
+        accumulated = track.scrollLeft;
+        expected = track.scrollLeft;
+        rafId = requestAnimationFrame(tick);
+        return;
       }
+
+      if (rewinding) {
+        // Driven by our own easing rather than a native smooth-scroll +
+        // guessed timeout: a fixed wait can't reliably tell when a native
+        // animation has actually settled, and resyncing too early reads
+        // a still-moving scrollLeft as "the visitor grabbed it," killing
+        // autoplay for good right after every single lap.
+        var t = Math.min(1, (ts - rewindStartTs) / REWIND_MS);
+        accumulated = rewindFrom * (1 - easeOutCubic(t));
+        track.scrollLeft = accumulated;
+        expected = track.scrollLeft;
+        if (t >= 1) {
+          rewinding = false;
+          lastTs = ts;
+        }
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      var dt = (ts - lastTs) / 1000;
+      lastTs = ts;
+
+      if (atEnd()) {
+        rewinding = true;
+        rewindStartTs = ts;
+        rewindFrom = track.scrollLeft;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      accumulated += SPEED * dt;
+      track.scrollLeft = accumulated;
+      expected = track.scrollLeft;
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function startAuto() {
+      if (rafId !== null || userTookOver || !visible) return;
+      // Mandatory scroll-snap fights a continuous programmatic scroll -
+      // Chromium snaps straight back to the nearest snap point (0) on
+      // every sub-item-width write, so the track never visibly moves.
+      // Suspend it for the duration of the drift; stopAuto() restores it.
+      track.style.scrollSnapType = 'none';
+      lastTs = null;
+      expected = null;
+      rafId = requestAnimationFrame(tick);
     }
 
     track.addEventListener('scroll', function () {
-      if (!ownScroll) stopForGood();
+      if (externalScrollHappened()) stopForGood();
     }, { passive: true });
     prevBtn.addEventListener('click', stopForGood, { once: true });
     nextBtn.addEventListener('click', stopForGood, { once: true });
@@ -228,16 +286,14 @@
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            startAuto();
-          } else if (timer) {
-            clearInterval(timer);
-            timer = null;
-          }
+          visible = entry.isIntersecting;
+          if (visible) startAuto();
+          else stopAuto();
         });
       }, { threshold: 0.4 });
       observer.observe(track);
     } else {
+      visible = true;
       startAuto();
     }
   }
