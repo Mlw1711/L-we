@@ -671,6 +671,22 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   font-size: 0.95rem;
 }
 
+.dish-price-multi {
+  white-space: normal;
+  text-align: right;
+  max-width: 11rem;
+}
+
+.menu-panel h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 1.6rem 0 0.6rem;
+}
+
+.menu-panel h4:first-of-type { margin-top: 0; }
+
 .dish-desc {
   margin: 0.2rem 0 0;
   font-size: 0.85rem;
