@@ -249,7 +249,7 @@
   var imgs = document.querySelectorAll('img[data-fallback]');
   imgs.forEach(function (img) {
     function markMissing() {
-      var holder = img.closest('.hero, .carousel-item, .food-break');
+      var holder = img.closest('.hero, .carousel-item, .food-break, .atmosphere-strip-media');
       if (holder) holder.classList.add('img-missing');
     }
     // The browser may start loading (and failing) an image before this
