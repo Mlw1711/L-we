@@ -837,7 +837,12 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 .mobile-bar svg { width: 20px; height: 20px; }
 .mobile-bar .call { color: var(--accent-deep); }
 
-@media (max-width: 640px) {
+/* Matches the header's own breakpoint (860px), not 640px: the header's
+   call button disappears at 860px, and this bar is the only remaining
+   persistent way to call/find/order below that - a narrower cutoff here
+   left a gap (roughly 640-860px, including iPad portrait) with no
+   visible click-to-call anywhere without scrolling. */
+@media (max-width: 860px) {
   .mobile-bar { display: block; }
   body { padding-bottom: var(--bottom-bar-h); }
 }

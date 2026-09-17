@@ -167,6 +167,63 @@
 
   prevBtn.addEventListener('click', function () { scrollByScreen(-1); });
   nextBtn.addEventListener('click', function () { scrollByScreen(1); });
+
+  // Auto-advance through the photos, looping back to the start, for as
+  // long as nobody has touched the carousel themselves and it's actually
+  // on screen. The moment a visitor scrolls, swipes, or uses the prev/next
+  // buttons, autoplay stops for good - it should never fight their control.
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var AUTO_ADVANCE_MS = 4500;
+    var timer = null;
+    var userTookOver = false;
+
+    function atEnd() {
+      return track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    }
+
+    function autoAdvance() {
+      if (atEnd()) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollByScreen(1);
+      }
+    }
+
+    function startAuto() {
+      if (timer || userTookOver) return;
+      timer = setInterval(autoAdvance, AUTO_ADVANCE_MS);
+    }
+
+    function stopForGood() {
+      userTookOver = true;
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    ['pointerdown', 'touchstart', 'wheel'].forEach(function (evt) {
+      track.addEventListener(evt, stopForGood, { passive: true, once: true });
+    });
+    prevBtn.addEventListener('click', stopForGood, { once: true });
+    nextBtn.addEventListener('click', stopForGood, { once: true });
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            startAuto();
+          } else if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+        });
+      }, { threshold: 0.4 });
+      observer.observe(track);
+    } else {
+      startAuto();
+    }
+  }
 })();
 
 // Graceful fallback for missing photos: keep the styled placeholder
