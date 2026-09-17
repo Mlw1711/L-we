@@ -297,7 +297,24 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 /* Hero */
 
 .hero {
+  /* Full-bleed navy backdrop behind the framed photo below - on wide
+     monitors the frame's max-width leaves empty space either side, and
+     this reads as a deliberate dark passe-partout instead of a stray
+     gap of page-white. Same navy already used for the header/accent. */
   position: relative;
+  background: var(--dark);
+  color: #fff;
+}
+
+.hero-frame {
+  position: relative;
+  /* margin: auto (not flex centering) so an explicit width never enters
+     the picture - a flex item's definite width can short-circuit the
+     aspect-ratio/max-height reconciliation below and force a much
+     tighter crop than intended. Plain block sizing lets max-width and
+     max-height (with aspect-ratio) resolve together correctly, exactly
+     as it did before this frame existed as its own element. */
+  margin: 0 auto;
   /* The full, uncropped photo (matching its own 1245:1278 ratio exactly)
      used to be the priority - but on wide/short desktop monitors that
      made the hero taller than the viewport, pushing the sign's "Löwen"
@@ -308,15 +325,13 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   aspect-ratio: 1245 / 1278;
   max-width: 1700px;
   max-height: 88vh;
-  margin: 0 auto;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  color: #fff;
 }
 
 @media (max-width: 640px) {
-  .hero { aspect-ratio: auto; min-height: 58vh; max-height: none; }
+  .hero-frame { aspect-ratio: auto; min-height: 58vh; max-height: none; }
 }
 
 .hero-media {
