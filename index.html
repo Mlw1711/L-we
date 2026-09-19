@@ -26,17 +26,21 @@
   "image": "images/og-image.jpg",
   "servesCuisine": ["German", "Greek", "Mediterranean"],
   "priceRange": "€€",
-  "telephone": "+49-721-96146900",
+  "telephone": "+49-721-47075164",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Neureuter Hauptstraße 243",
     "postalCode": "76149",
-    "addressLocality": "Karlsruhe",
+    "addressLocality": "Karlsruhe-Neureut",
     "addressCountry": "DE"
   },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "11:00", "closes": "14:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "23:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "12:00", "closes": "14:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "12:00", "closes": "14:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "17:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "17:00", "closes": "23:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "12:00", "closes": "15:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "17:00", "closes": "22:00" }
   ]
 }
 </script>
@@ -77,9 +81,9 @@
       <a href="#kontakt">Kontakt</a>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-outline btn-call" href="tel:+4972196146900">
+      <a class="btn btn-outline btn-call" href="tel:+4972147075164">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        0721 96 14 69 00
+        0721 47 07 51 64
       </a>
       <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
@@ -89,9 +93,9 @@
   <div class="nav-drawer" id="nav-drawer">
     <a href="#speisekarte">Speisekarte</a>
     <a href="#kontakt">Kontakt</a>
-    <a class="btn btn-primary" href="tel:+4972196146900">
+    <a class="btn btn-primary" href="tel:+4972147075164">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      0721 96 14 69 00
+      0721 47 07 51 64
     </a>
   </div>
 </header>
@@ -128,7 +132,7 @@
           <button role="tab" id="tab-vorspeisen-kalt" aria-controls="panel-vorspeisen-kalt" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Vorspeisen</button>
           <button role="tab" id="tab-vorspeisen-warm" aria-controls="panel-vorspeisen-warm" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Warme Vorspeisen</button>
           <button role="tab" id="tab-salate" aria-controls="panel-salate" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Salate</button>
-          <button role="tab" id="tab-grill" aria-controls="panel-grill" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Vom Grill</button>
+          <button role="tab" id="tab-grill" aria-controls="panel-grill" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Fleisch vom Grill</button>
           <button role="tab" id="tab-deutsch" aria-controls="panel-deutsch" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Deutsche Küche</button>
           <button role="tab" id="tab-mixteller" aria-controls="panel-mixteller" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Mix-Teller</button>
           <button role="tab" id="tab-fisch" aria-controls="panel-fisch" aria-selected="false" tabindex="-1" class="menu-tab" type="button">Fisch</button>
@@ -154,16 +158,15 @@
             <h3>Vorspeisen</h3>
             <ul class="dish-list is-long">
               <li class="dish"><div class="dish-row"><span class="dish-name">Tzatziki</span><span class="dish-price">4,90&nbsp;€</span></div><p class="dish-desc">Joghurt, Gurken, Knoblauch, Olivenöl, Dill</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Tarama</span><span class="dish-price">6,50&nbsp;€</span></div><p class="dish-desc">Kaviar, Olivenöl</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Auberginensalat</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Gegrillte Auberginen, Paprika, Zwiebel, Knoblauch</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Lütika</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Feta, Paprika, Olivenöl</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Mix</span><span class="dish-price">7,50&nbsp;€</span></div><p class="dish-desc">Tzatziki, Tarama, Lütika, Auberginensalat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lütika</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Feta, Oliven, Paprika, Olivenöl</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Mix</span><span class="dish-price">7,50&nbsp;€</span></div><p class="dish-desc">Tzatziki, Lütika, Auberginensalat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Tomate-Mozzarella mit Kräutern</span><span class="dish-price">6,90&nbsp;€</span></div><p class="dish-desc">Tomaten, Mozzarella, Gartenkräuter</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Oliventeller</span><span class="dish-price">6,80&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Dicke Bohnen mit Käse</span><span class="dish-price">6,50&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Weinblätter gefüllt mit Reis</span><span class="dish-price">6,50&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Vorspeisenkreation für eine Person</span><span class="dish-price">14,50&nbsp;€</span></div><p class="dish-desc">Tzatziki, Tarama, Auberginensalat, Lütika, gefüllte Weinblätter, dicke Bohnen, gefüllte Champignons, gebackener Schafskäse</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Vorspeisenkreation für Zwei</span><span class="dish-price">28,90&nbsp;€</span></div><p class="dish-desc">Kalt &amp; warm: Tzatziki, Tarama, Auberginensalat, Lütika, gegrillte Peperoni, gegrillter Schafskäse, gefüllte Champignons, gebackener Schafskäse, dicke Bohnen</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Vorspeisenkreation für eine Person</span><span class="dish-price">14,50&nbsp;€</span></div><p class="dish-desc">Tzatziki, Oliven, Auberginensalat, Lütika, gefüllte Weinblätter, dicke Bohnen, gefüllte Champignons, gebackener Schafskäse</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Vorspeisenkreation für Zwei</span><span class="dish-price">28,90&nbsp;€</span></div><p class="dish-desc">Kalt &amp; warm: Tzatziki, Oliven, Auberginensalat, Lütika, gegrillte Peperoni, gefüllte Champignons, gegrillter Schafskäse, gebackener Schafskäse, dicke Bohnen</p></li>
             </ul>
           </div>
 
@@ -186,17 +189,18 @@
           <div role="tabpanel" id="panel-salate" aria-labelledby="tab-salate" class="menu-panel" hidden>
             <h3>Salate</h3>
             <ul class="dish-list">
-              <li class="dish"><div class="dish-row"><span class="dish-name">Shopska-Salat</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Tomaten, Gurken, Feta, Zwiebel, Paprika</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Schopska-Salat</span><span class="dish-price">11,90&nbsp;€</span></div><p class="dish-desc">Tomaten, Gurken, Feta, Zwiebel, Paprika</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Gyros-Salat</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Gyros</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Putensalat</span><span class="dish-price">12,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Putenfleisch</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Krautsalat</span><span class="dish-price">5,50&nbsp;€</span></div><p class="dish-desc">Weißkraut, Karotten</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Löwensalat</span><span class="dish-price">15,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Rumpsteak</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Beilagensalat</span><span class="dish-price">3,50&nbsp;€</span></div><p class="dish-desc">Gemischter Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Puten-Salat</span><span class="dish-price">13,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Putenfleisch</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Löwen-Salat</span><span class="dish-price">15,90&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit Rumpsteak</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Calamari-Salat</span><span class="dish-price">14,50&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit gebackenen Calamariringen</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet-Salat</span><span class="dish-price">14,50&nbsp;€</span></div><p class="dish-desc">Gemischter Salat mit gegrilltem Lachsfilet</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Beilagen-Salat</span><span class="dish-price">3,50&nbsp;€</span></div><p class="dish-desc">Gemischter Salat</p></li>
             </ul>
           </div>
 
           <div role="tabpanel" id="panel-grill" aria-labelledby="tab-grill" class="menu-panel" hidden>
-            <h3>Vom Grill</h3>
+            <h3>Fleisch vom Grill</h3>
             <ul class="dish-list is-long">
               <li class="dish"><div class="dish-row"><span class="dish-name">Mixspieß mit Bratkartoffeln</span><span class="dish-price">24,90&nbsp;€</span></div><p class="dish-desc">2 Lenden, 2 Rumpsteaks, Salat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Löwenspieß mit Gemüsepfanne</span><span class="dish-price">29,90&nbsp;€</span></div><p class="dish-desc">2 Lammkoteletts, 1 Rumpsteak, 2 Lenden, Salat</p></li>
@@ -213,19 +217,18 @@
               <li class="dish"><div class="dish-row"><span class="dish-name">Lammhaxe mit Bratkartoffeln</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Grüne oder dicke Bohnen, Salat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Schweinefilets mit Pfeffersoße</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Mit Pommes und Salat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Schweinespießchen mit Pommes</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Und Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Kebapcheta mit Pommes</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Hackfleischröllchen, Salat</p></li>
             </ul>
           </div>
 
           <div role="tabpanel" id="panel-deutsch" aria-labelledby="tab-deutsch" class="menu-panel" hidden>
             <h3>Deutsche Küche</h3>
             <ul class="dish-list">
-              <li class="dish"><div class="dish-row"><span class="dish-name">Putenschnitzel</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putenschnitzel</span><span class="dish-price">17,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes, Salat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Schweineschnitzel</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Putensteak</span><span class="dish-price">17,90&nbsp;€</span></div><p class="dish-desc">Pommes, Salat, Kräuterbutter oder Käsesoße</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Putensteak</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Pommes, Salat, Kräuterbutter oder Käsesoße</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Schweinenackensteak</span><span class="dish-price">16,90&nbsp;€</span></div><p class="dish-desc">Pommes, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Rumpsteak 250 g</span><span class="dish-price">25,90&nbsp;€</span></div><p class="dish-desc">Gemüsepfanne, Kräuterbutter, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Rumpsteak 250 g</span><span class="dish-price">26,90&nbsp;€</span></div><p class="dish-desc">Bratkartoffeln, gebratene Zwiebeln, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rumpsteak 250 g</span><span class="dish-price">29,90&nbsp;€</span></div><p class="dish-desc">Gemüsepfanne, Pfeffersoße, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rumpsteak 250 g</span><span class="dish-price">28,90&nbsp;€</span></div><p class="dish-desc">Bratkartoffeln, gebratene Zwiebeln, Salat</p></li>
             </ul>
           </div>
 
@@ -246,13 +249,12 @@
             <ul class="dish-list is-long">
               <li class="dish"><div class="dish-row"><span class="dish-name">Garnelen</span><span class="dish-price">23,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Calamari gebacken</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Calamari vom Grill</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Doradenfilet</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">21,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Gartenkräuter, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">21,90&nbsp;€</span></div><p class="dish-desc">Salzkartoffeln, Käsesoße, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Zanderfilet</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Calamari gegrillt</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Doradenfilet</span><span class="dish-price">21,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Lachsfilet</span><span class="dish-price">19,90&nbsp;€</span></div><p class="dish-desc">Nudeln, Gartenkräuter, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Zanderfilet</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Rotbarschfilet</span><span class="dish-price">18,90&nbsp;€</span></div><p class="dish-desc">Gemüsereis, Salat</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Meeresplatte für 2 Personen</span><span class="dish-price">58,00&nbsp;€</span></div><p class="dish-desc">Calamariringe, 2 Doradenfilets, 2 Zanderfilets, Garnelen, Lachsfilet, Tarama, Gemüsereis, Salat</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Meeresplatte für 2 Personen</span><span class="dish-price">58,00&nbsp;€</span></div><p class="dish-desc">Calamariringe, 2 Doradenfilets, 2 Zanderfilets, Garnelen, Lachsfilet, Tzatziki, Gemüsereis, Salat</p></li>
             </ul>
           </div>
 
@@ -272,7 +274,6 @@
               <li class="dish"><div class="dish-row"><span class="dish-name">Kroketten</span><span class="dish-price">3,50&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Gemüsereis</span><span class="dish-price">3,50&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Bandnudeln</span><span class="dish-price">3,50&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Salzkartoffeln</span><span class="dish-price">3,50&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Gemüsepfanne</span><span class="dish-price">4,50&nbsp;€</span></div></li>
             </ul>
           </div>
@@ -327,13 +328,15 @@
 
           <div role="tabpanel" id="panel-bier-wein" aria-labelledby="tab-bier-wein" class="menu-panel" hidden>
             <h3>Bier &amp; Wein</h3>
-            <h4>Bier vom Fass</h4>
-            <ul class="dish-list">
-              <li class="dish"><div class="dish-row"><span class="dish-name">Hefeweizen</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Pils</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Helles</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Sportweizen</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div><p class="dish-desc">Alkoholfrei</p></li>
-              <li class="dish"><div class="dish-row"><span class="dish-name">Radler</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
+            <h4>Offene Weine</h4>
+            <ul class="dish-list is-long">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Prosecco</span><span class="dish-price">0,1&nbsp;l 4,20&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Spätburgunder</span><span class="dish-price dish-price-multi">0,1&nbsp;l 3,50&nbsp;€ · 0,25&nbsp;l 6,90&nbsp;€</span></div><p class="dish-desc">Rotwein, Oberkircher</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Dornfelder</span><span class="dish-price dish-price-multi">0,1&nbsp;l 3,50&nbsp;€ · 0,25&nbsp;l 6,90&nbsp;€</span></div><p class="dish-desc">Rotwein, Oberkircher</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Weisser Burgunder</span><span class="dish-price dish-price-multi">0,1&nbsp;l 3,50&nbsp;€ · 0,25&nbsp;l 6,90&nbsp;€</span></div><p class="dish-desc">Weißwein, Oberkircher</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Grauer Burgunder</span><span class="dish-price dish-price-multi">0,1&nbsp;l 3,50&nbsp;€ · 0,25&nbsp;l 6,90&nbsp;€</span></div><p class="dish-desc">Weißwein, Oberkircher</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Riesling</span><span class="dish-price dish-price-multi">0,1&nbsp;l 3,50&nbsp;€ · 0,25&nbsp;l 6,90&nbsp;€</span></div><p class="dish-desc">Weißwein, Oberkircher</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Rosewein</span><span class="dish-price dish-price-multi">0,1&nbsp;l 3,50&nbsp;€ · 0,25&nbsp;l 6,90&nbsp;€</span></div><p class="dish-desc">Oberkircher</p></li>
             </ul>
             <h4>Weinschorle</h4>
             <ul class="dish-list">
@@ -341,6 +344,14 @@
               <li class="dish"><div class="dish-row"><span class="dish-name">Weißweinschorle</span><span class="dish-price">0,25&nbsp;l 4,50&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Roséschorle</span><span class="dish-price">0,25&nbsp;l 4,50&nbsp;€</span></div></li>
               <li class="dish"><div class="dish-row"><span class="dish-name">Rieslingschorle</span><span class="dish-price">0,25&nbsp;l 4,50&nbsp;€</span></div></li>
+            </ul>
+            <h4>Bier vom Fass</h4>
+            <ul class="dish-list">
+              <li class="dish"><div class="dish-row"><span class="dish-name">Hefeweizen</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Pils</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Helles</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Sportweizen</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div><p class="dish-desc">Alkoholfrei</p></li>
+              <li class="dish"><div class="dish-row"><span class="dish-name">Radler</span><span class="dish-price dish-price-multi">0,3&nbsp;l 3,90&nbsp;€ · 0,5&nbsp;l 5,20&nbsp;€</span></div></li>
             </ul>
           </div>
 
@@ -365,7 +376,7 @@
       </div>
 
       <div id="menu-mittag-view" class="reveal" hidden>
-        <p class="panel-note center">Nur mittags, Montag–Freitag 11:00–14:00 Uhr.</p>
+        <p class="panel-note center">Nur mittags, Montag–Freitag 12:00–14:30 Uhr.</p>
         <ul class="dish-list is-long">
           <li class="dish"><div class="dish-row"><span class="dish-name">Rinderleber</span><span class="dish-price">9,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
           <li class="dish"><div class="dish-row"><span class="dish-name">Schnitzel</span><span class="dish-price">10,90&nbsp;€</span></div><p class="dish-desc">Bratensoße, Pommes</p></li>
@@ -460,29 +471,25 @@
         <ul class="contact-facts">
           <li>
             <span class="label">Adresse</span>
-            <span class="value">Neureuter Hauptstraße 243<br>76149 Karlsruhe</span>
+            <span class="value">Neureuter Hauptstraße 243<br>76149 Karlsruhe-Neureut</span>
           </li>
           <li>
             <span class="label">Telefon</span>
             <span class="value">
-              <a href="tel:+4972196146900">
+              <a href="tel:+4972147075164">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                0721 96 14 69 00
+                0721 47 07 51 64
               </a>
             </span>
           </li>
           <li>
             <span class="label">Öffnungszeiten</span>
-            <span class="value">Mo–Fr 11–14 &amp; 17–23 Uhr<br>Sa 17–23 Uhr</span>
-          </li>
-          <li>
-            <span class="label">Ruhetag</span>
-            <span class="value">Sonntag</span>
+            <span class="value">Mo 12–14:30 Uhr<br>Di–Fr 12–14:30 &amp; 17–23 Uhr<br>Sa 17–23 Uhr<br>So 12–15 &amp; 17–22 Uhr</span>
           </li>
         </ul>
 
         <div class="contact-actions">
-          <a class="btn btn-primary" href="tel:+4972196146900">Jetzt anrufen</a>
+          <a class="btn btn-primary" href="tel:+4972147075164">Jetzt anrufen</a>
           <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Neureuter+Hauptstra%C3%9Fe+243%2C+76149+Karlsruhe" target="_blank" rel="noopener">Route planen</a>
         </div>
       </div>
@@ -496,7 +503,7 @@
     <div class="footer-details">
       <p class="footer-brand">Löwen Neureut</p>
       <p>Neureuter Hauptstraße 243 · 76149 Karlsruhe</p>
-      <p><a href="tel:+4972196146900">0721 96 14 69 00</a></p>
+      <p><a href="tel:+4972147075164">0721 47 07 51 64</a></p>
     </div>
     <nav class="footer-nav" aria-label="Footer-Navigation">
       <button type="button" class="footer-nav-toggle" data-legal-toggle="impressum" aria-expanded="false" aria-controls="impressum">Impressum</button>
@@ -520,7 +527,7 @@
     </p>
     <p>
       <strong>Kontakt</strong><br>
-      Telefon: 0721 96 14 69 00<br>
+      Telefon: 0721 47 07 51 64<br>
       E-Mail: <mark class="todo">[E-Mail-Adresse einfügen]</mark>
     </p>
     <p>
@@ -539,7 +546,7 @@
     <p>
       Löwen Neureut – Gasthaus Zum Löwen<br>
       Svetoslav Andreev, Werner-Heisenberg-Straße 14, 76344 Eggenstein-Leopoldshafen<br>
-      Telefon: 0721 96 14 69 00 · E-Mail: <mark class="todo">[E-Mail-Adresse einfügen]</mark>
+      Telefon: 0721 47 07 51 64 · E-Mail: <mark class="todo">[E-Mail-Adresse einfügen]</mark>
     </p>
 
     <h3>Aufruf dieser Website</h3>
@@ -554,7 +561,7 @@
 
 <nav class="mobile-bar" aria-label="Schnellzugriff">
   <div class="mobile-bar-inner">
-    <a class="call" href="tel:+4972196146900">
+    <a class="call" href="tel:+4972147075164">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Anrufen
     </a>
