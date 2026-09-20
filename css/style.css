@@ -895,3 +895,36 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
   .mobile-bar { display: block; }
   body { padding-bottom: var(--bottom-bar-h); }
 }
+
+/* Call confirmation toast: a tel: link silently does nothing on a
+   desktop with no calling app registered, so clicking a call button
+   there looks broken even though it's correct. This gives every click
+   a visible result regardless of device. */
+.call-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translate(-50%, 12px);
+  background: var(--dark);
+  color: var(--on-dark);
+  padding: 0.7em 1.2em;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(11, 24, 48, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 300;
+  white-space: nowrap;
+}
+
+.call-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 860px) {
+  .call-toast { bottom: calc(var(--bottom-bar-h) + 1rem); }
+}

@@ -319,6 +319,46 @@
   });
 })();
 
+// Call buttons: tel: already opens the phone dialer natively on a
+// mobile device, but a desktop browser has no calling app to hand the
+// tel: scheme to and does nothing at all when clicked there - looks
+// exactly like a broken button even though the link is correct. Also
+// copy the number to the clipboard and show a brief confirmation on
+// every click, everywhere, so it visibly does something regardless of
+// device; the native tel: navigation itself is untouched (no
+// preventDefault) so it still opens the dialer wherever that works.
+(function () {
+  var callLinks = document.querySelectorAll('a[href^="tel:"]');
+  if (!callLinks.length || !navigator.clipboard) return;
+
+  var toast = document.createElement('div');
+  toast.className = 'call-toast';
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
+  document.body.appendChild(toast);
+  var hideTimer = null;
+
+  function formatGermanPhone(href) {
+    var digits = '0' + href.replace('tel:+49', '');
+    var pairs = digits.slice(4).match(/.{1,2}/g) || [];
+    return [digits.slice(0, 4)].concat(pairs).join(' ');
+  }
+
+  callLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      var number = formatGermanPhone(link.getAttribute('href'));
+      navigator.clipboard.writeText(number).then(function () {
+        toast.textContent = 'Nummer kopiert: ' + number;
+        toast.classList.add('is-visible');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          toast.classList.remove('is-visible');
+        }, 2400);
+      }).catch(function () {});
+    });
+  });
+})();
+
 // Subtle scroll reveal (progressive enhancement; content stays visible
 // without JS or when IntersectionObserver is unsupported).
 (function () {
