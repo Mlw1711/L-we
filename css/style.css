@@ -297,13 +297,19 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 /* Hero */
 
 .hero {
-  /* Full-bleed navy backdrop behind the framed photo below - on wide
-     monitors the frame's max-width leaves empty space either side, and
-     this reads as a deliberate dark passe-partout instead of a stray
-     gap of page-white. Same navy already used for the header/accent. */
+  /* Full-bleed backdrop behind the framed photo below - on wide monitors
+     the frame's max-width leaves empty space either side. A heavily
+     blurred, darkened copy of the same photo fills it, so the edge
+     reads as a natural continuation of the picture instead of a flat
+     color block or a stray gap of page-white. Navy is the fallback
+     while the (tiny, ~3KB) backdrop image loads or if it fails. */
   position: relative;
-  background: var(--dark);
+  background: var(--dark) center / cover no-repeat;
   color: #fff;
+}
+
+@media (min-width: 641px) {
+  .hero { background-image: url('../images/hero-backdrop.webp'); }
 }
 
 .hero-frame {
