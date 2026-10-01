@@ -847,14 +847,6 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 .legal h3 { color: var(--on-dark); font-size: 1rem; margin-top: 1.5em; }
 .legal a { color: var(--accent-soft); }
 
-.legal .todo {
-  background: var(--accent-soft);
-  color: var(--ink);
-  padding: 0.1em 0.4em;
-  border-radius: 4px;
-  font-style: normal;
-}
-
 /* Mobile sticky action bar */
 
 .mobile-bar {
